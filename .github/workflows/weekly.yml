@@ -1,0 +1,32 @@
+name: Weekly ERC
+
+on:
+  schedule:
+    # Monday 9:00am Mountain Time, after Sunday games are final
+    - cron: "0 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Get the site files
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install the two libraries the rating needs
+        run: pip install pandas numpy
+      - name: Compute this week's rating
+        run: python erc_weekly.py 2026
+      - name: Rebuild the page
+        run: python build_page.py
+      - name: Save the new page
+        uses: stefanzweifel/git-auto-commit-action@v5
+        with:
+          commit_message: Update ERC ranking
+          file_pattern: index.html erc_2026_latest.csv
