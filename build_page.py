@@ -3,7 +3,7 @@ import pandas as pd
 from datetime import datetime, timezone
 
 df = pd.read_csv("erc_2026_latest.csv").sort_values("erc_rank")
-top = df.head(25)
+top = df.head(50)
 stamp = datetime.now(timezone.utc).strftime("%B %d, %Y")
 
 rows = []
