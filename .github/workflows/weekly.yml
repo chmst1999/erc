@@ -2,8 +2,8 @@ name: Weekly ERC
 
 on:
   schedule:
-    # Monday 9:00am Mountain Time, after Sunday games are final
-    - cron: "0 15 * * 1"
+    # Monday 5:00am Mountain Time, after Sunday games are final
+    - cron: "0 11 * * 1"
   workflow_dispatch:
 
 permissions:
