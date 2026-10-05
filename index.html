@@ -11,7 +11,7 @@
   table { border-collapse: collapse; width: 100%; margin: 1.2rem 0; }
   th, td { text-align: left; padding: 0.35rem 0.45rem; border-bottom: 1px solid #ddd; }
   th { border-bottom: 2px solid #222; }
-  .split { color: #7a2e0e; font-weight: 600; }
+  h2 { font-size: 1.2rem; margin-top: 2rem; }
 </style>
 </head>
 <body>
@@ -25,5 +25,10 @@
 <tr><td>1</td><td>Alabama</td><td>5–0</td><td>1</td><td>SEC</td></tr><tr><td>2</td><td>Notre Dame</td><td>5–0</td><td>4</td><td>FBS Independents</td></tr><tr><td>3</td><td>Utah</td><td>3–0</td><td class="split">14</td><td>Big 12</td></tr><tr><td>4</td><td>Texas Tech</td><td>4–0</td><td>7</td><td>Big 12</td></tr><tr><td>5</td><td>Miami</td><td>4–0</td><td>3</td><td>ACC</td></tr><tr><td>6</td><td>Boise State</td><td>3–1</td><td class="split">27</td><td>Pac-12</td></tr><tr><td>7</td><td>Texas</td><td>4–0</td><td>2</td><td>SEC</td></tr><tr><td>8</td><td>Houston</td><td>3–1</td><td class="split">26</td><td>Big 12</td></tr><tr><td>9</td><td>Northwestern</td><td>2–1</td><td class="split">37</td><td>Big Ten</td></tr><tr><td>10</td><td>Nebraska</td><td>4–0</td><td>6</td><td>Big Ten</td></tr><tr><td>11</td><td>Oregon</td><td>2–1</td><td>21</td><td>Big Ten</td></tr><tr><td>12</td><td>UCLA</td><td>4–0</td><td>11</td><td>Big Ten</td></tr><tr><td>13</td><td>Missouri</td><td>3–1</td><td>23</td><td>SEC</td></tr><tr><td>14</td><td>Ohio State</td><td>4–1</td><td>24</td><td>Big Ten</td></tr><tr><td>15</td><td>Georgia</td><td>4–0</td><td>13</td><td>SEC</td></tr><tr><td>16</td><td>LSU</td><td>3–1</td><td>22</td><td>SEC</td></tr><tr><td>17</td><td>BYU</td><td>3–0</td><td>12</td><td>Big 12</td></tr><tr><td>18</td><td>Indiana</td><td>4–0</td><td>17</td><td>Big Ten</td></tr><tr><td>19</td><td>Wisconsin</td><td>3–1</td><td>20</td><td>Big Ten</td></tr><tr><td>20</td><td>Mississippi State</td><td>4–1</td><td class="split">8</td><td>SEC</td></tr><tr><td>21</td><td>Florida</td><td>3–1</td><td>16</td><td>SEC</td></tr><tr><td>22</td><td>Kentucky</td><td>3–1</td><td>19</td><td>SEC</td></tr><tr><td>23</td><td>Tennessee</td><td>3–1</td><td class="split">34</td><td>SEC</td></tr><tr><td>24</td><td>James Madison</td><td>4–0</td><td class="split">9</td><td>Sun Belt</td></tr><tr><td>25</td><td>Oklahoma State</td><td>2–1</td><td class="split">39</td><td>Big 12</td></tr>
 </tbody>
 </table>
+<h2>How the number is made</h2>
+<p>Each team has one strength number, called r. It is solved again every Monday from every FBS game played so far. An FCS game is left out, the same as a bye. A team is not ranked until it has three FBS games.</p>
+<p>For each game the fit is r for the home team, minus r for the away team, plus about 2 to 3 points if the game is at home. On a neutral field that home term is zero. The margin is the home score minus the away score, and it is cut off at 21 points either way. The ratings are whatever set of numbers makes those games miss by as little as possible. A loss is never entered as a plus. Conference is not in the equation. It is only a label in the table.</p>
+<p>Colley, the second column, ignores the score and uses wins and losses only. If the two ranks differ by more than ten spots, that team is marked brown and the week is not settled.</p>
+<p>In the 2024 playoff, ERC had Notre Dame over Georgia and Ohio State over Texas. The committee had those the other way, and the games went with ERC. In the 2025 playoff, ERC had Alabama over Oklahoma, Miami over Texas A&M, and Miami over Ole Miss. The committee had the opposite order in all three, and the games went with ERC. The check is small. It is the games, not a conference adjustment.</p>
 </body>
 </html>
