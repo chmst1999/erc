@@ -3,18 +3,24 @@ import pandas as pd
 from datetime import datetime, timezone
 
 df = pd.read_csv("erc_2026_latest.csv").sort_values("erc_rank")
-top = df.head(50)
+top25 = df.head(25)
+next25 = df.iloc[25:50]
 stamp = datetime.now(timezone.utc).strftime("%B %d, %Y")
 
-rows = []
-for r in top.itertuples(index=False):
-    gap = abs(int(r.erc_rank) - int(r.colley_rank))
-    mark = ' class="split"' if gap > 10 else ""
-    rows.append(
-        f"<tr><td>{int(r.erc_rank)}</td><td>{r.team}</td>"
-        f"<td>{int(r.fbs_wins)}–{int(r.fbs_losses)}</td>"
-        f"<td{mark}>{int(r.colley_rank)}{'*' if gap > 10 else ''}</td><td>{r.conference}</td></tr>"
-    )
+def make_rows(frame):
+    out = []
+    for r in frame.itertuples(index=False):
+        gap = abs(int(r.erc_rank) - int(r.colley_rank))
+        mark = ' class="split"' if gap > 10 else ""
+        out.append(
+            f"<tr><td>{int(r.erc_rank)}</td><td>{r.team}</td>"
+            f"<td>{int(r.fbs_wins)}–{int(r.fbs_losses)}</td>"
+            f"<td{mark}>{int(r.colley_rank)}{'*' if gap > 10 else ''}</td><td>{r.conference}</td></tr>"
+        )
+    return out
+
+rows25 = make_rows(top25)
+rows50 = make_rows(next25)
 
 html = f"""<!DOCTYPE html>
 <html lang="en">
@@ -41,7 +47,7 @@ html = f"""<!DOCTYPE html>
 <table>
 <thead><tr><th>ERC</th><th>Team</th><th>FBS record</th><th>Colley</th><th>Conference</th></tr></thead>
 <tbody>
-{''.join(rows)}
+{''.join(rows25)}
 </tbody>
 </table>
 <h2>How the number is made</h2>
@@ -50,6 +56,13 @@ html = f"""<!DOCTYPE html>
 <p>A loss does not subtract a fixed number of spots. The sheet is solved again from every game. Alabama’s home loss to Georgia was by three points. Home field is about 2.6 points, so that game says Georgia is roughly 5.6 points better than Alabama. Alabama’s other five FBS games are all wins of more than 21 points, the cap. Those five lines still place Alabama first. Georgia rises because the new game is in Georgia’s favor. The rank is the whole sheet, not the last result.</p>
 <p>Colley, the second column, ignores the score and uses wins and losses only. If the two ranks differ by more than ten spots, that team is marked with a red asterisk and the week is not settled.</p>
 <p>In the 2024 playoff, ERC had Notre Dame over Georgia and Ohio State over Texas. The committee had those the other way, and the games went with ERC. In the 2025 playoff, ERC had Alabama over Oklahoma, Miami over Texas A&M, and Miami over Ole Miss. The committee had the opposite order in all three, and the games went with ERC. The check is small. It is the games, not a conference adjustment.</p>
+<h2>26–50</h2>
+<table>
+<thead><tr><th>ERC</th><th>Team</th><th>FBS record</th><th>Colley</th><th>Conference</th></tr></thead>
+<tbody>
+{''.join(rows50)}
+</tbody>
+</table>
 </body>
 </html>
 """
