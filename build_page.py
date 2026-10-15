@@ -12,7 +12,7 @@ def make_rows(frame):
     for r in frame.itertuples(index=False):
         gap = abs(int(r.erc_rank) - int(r.colley_rank))
         mark = ' class="split"' if gap > 10 else ""
-             sos_val = f"{r.played_sos:.1f}" if pd.notna(r.played_sos) else "—"
+        sos_val = f"{r.played_sos:.1f}" if pd.notna(r.played_sos) else "—"
         out.append(
             f"<tr><td>{int(r.erc_rank)}</td><td>{r.team}</td>"
             f"<td>{int(r.fbs_wins)}–{int(r.fbs_losses)}</td>"
@@ -60,7 +60,7 @@ html = f"""<!DOCTYPE html>
 <p>In the 2024 playoff, ERC had Notre Dame over Georgia and Ohio State over Texas. The committee had those the other way, and the games went with ERC. In the 2025 playoff, ERC had Alabama over Oklahoma, Miami over Texas A&M, and Miami over Ole Miss. The committee had the opposite order in all three, and the games went with ERC. The check is small. It is the games, not a conference adjustment.</p>
 <h2>26–50</h2>
 <table>
-<thead><tr><th>ERC</th><th>Team</th><th>FBS record</th><th>Colley</th><th>Conference</th></tr></thead>
+<thead><tr><th>ERC</th><th>Team</th><th>FBS record</th><th>r</th><th>Colley</th><th>Played ERC SOS</th><th>Conference</th></tr></thead>
 <tbody>
 {''.join(rows50)}
 </tbody>
