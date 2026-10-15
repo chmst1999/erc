@@ -12,10 +12,12 @@ def make_rows(frame):
     for r in frame.itertuples(index=False):
         gap = abs(int(r.erc_rank) - int(r.colley_rank))
         mark = ' class="split"' if gap > 10 else ""
+             sos_val = f"{r.played_sos:.1f}" if pd.notna(r.played_sos) else "—"
         out.append(
             f"<tr><td>{int(r.erc_rank)}</td><td>{r.team}</td>"
             f"<td>{int(r.fbs_wins)}–{int(r.fbs_losses)}</td>"
-            f"<td>{r.erc:.1f}</td><td{mark}>{int(r.colley_rank)}{'*' if gap > 10 else ''}</td><td>{r.conference}</td></tr>"
+            f"<td>{r.erc:.1f}</td><td{mark}>{int(r.colley_rank)}{'*' if gap > 10 else ''}</td>"
+            f"<td>{sos_val}</td><td>{r.conference}</td></tr>"
         )
     return out
 
@@ -45,7 +47,7 @@ html = f"""<!DOCTYPE html>
 <p>Every opponent has one strength number. Beating that team is worth the same thing no matter who did it. A loss is a loss. An FCS game counts as a bye. Margin counts only up to 21 points. There is no preseason ranking and no conference bonus. Colley uses wins and losses only. A Colley rank with a red asterisk differs by more than ten spots, and that week is not settled. Conference is a label, not an input.</p>
 <p>Compare with the <a href="https://apnews.com/hub/ap-top-25-college-football-poll">AP poll</a> and the <a href="https://www.usatoday.com/sports/ncaaf/polls/coaches-poll/">coaches' poll</a> released the same week.</p>
 <table>
-<thead><tr><th>ERC</th><th>Team</th><th>FBS record</th><th>r</th><th>Colley</th><th>Conference</th></tr></thead>
+<thead><tr><th>ERC</th><th>Team</th><th>FBS record</th><th>r</th><th>Colley</th><th>Played ERC SOS</th><th>Conference</th></tr></thead>
 <tbody>
 {''.join(rows25)}
 </tbody>
