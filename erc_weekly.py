@@ -72,10 +72,29 @@ for t in teams:
     cb[idx[t]] = 1 + (w[t] - l[t]) / 2
 colley = np.linalg.solve(C, cb)
 
+# played SOS: average ERC rank of FBS opponents already faced
+rank_map = {}
+temp = []
+for t in teams:
+    if gp[t] < MIN_GAMES:
+        continue
+    temp.append((t, coef[idx[t]]))
+temp.sort(key=lambda x: -x[1])
+for i, (t, _) in enumerate(temp, 1):
+    rank_map[t] = i
+
+sos = {t: [] for t in teams}
+for r in fbs.itertuples(index=False):
+    if r.away_team in rank_map:
+        sos[r.home_team].append(rank_map[r.away_team])
+    if r.home_team in rank_map:
+        sos[r.away_team].append(rank_map[r.home_team])
+
 rows = []
 for t in teams:
     if gp[t] < MIN_GAMES:
         continue
+    opp_ranks = sos.get(t, [])
     rows.append({
         "team": t,
         "conference": conf.get(t, ""),
@@ -84,6 +103,7 @@ for t in teams:
         "fbs_wins": int(w[t]),
         "fbs_losses": int(l[t]),
         "fbs_games": gp[t],
+        "played_sos": round(sum(opp_ranks) / len(opp_ranks), 1) if opp_ranks else None,
     })
 out = pd.DataFrame(rows)
 out["erc_rank"] = out["erc"].rank(ascending=False, method="min").astype(int)
