@@ -31,6 +31,7 @@ html = f"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Equal Result Credit</title>
 <style>
+  th { white-space: normal; }
   body {{ font-family: Georgia, serif; max-width: 820px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; line-height: 1.45; }}
   h1 {{ font-size: 1.6rem; margin-bottom: 0.2rem; }}
   .sub {{ color: #444; margin-top: 0; }}
@@ -47,7 +48,7 @@ html = f"""<!DOCTYPE html>
 <p>Every opponent has one strength number. Beating that team is worth the same thing no matter who did it. A loss is a loss. An FCS game counts as a bye. Margin counts only up to 21 points. There is no preseason ranking and no conference bonus. Colley uses wins and losses only. A Colley rank with a red asterisk differs by more than ten spots, and that week is not settled. Conference is a label, not an input.</p>
 <p>Compare with the <a href="https://apnews.com/hub/ap-top-25-college-football-poll">AP poll</a> and the <a href="https://www.usatoday.com/sports/ncaaf/polls/coaches-poll/">coaches' poll</a> released the same week.</p>
 <table>
-<thead><tr><th>ERC</th><th>Team</th><th>FBS record</th><th>r</th><th>Colley</th><th>Played ERC SOS</th><th>Conference</th></tr></thead>
+<thead><tr><th>ERC</th><th>Team</th><th>FBS<br>record</th><th>r</th><th>Colley</th><th>Played<br>ERC SOS</th><th>Conference</th></tr></thead>
 <tbody>
 {''.join(rows25)}
 </tbody>
@@ -60,7 +61,7 @@ html = f"""<!DOCTYPE html>
 <p>In the 2024 playoff, ERC had Notre Dame over Georgia and Ohio State over Texas. The committee had those the other way, and the games went with ERC. In the 2025 playoff, ERC had Alabama over Oklahoma, Miami over Texas A&M, and Miami over Ole Miss. The committee had the opposite order in all three, and the games went with ERC. The check is small. It is the games, not a conference adjustment.</p>
 <h2>26–50</h2>
 <table>
-<thead><tr><th>ERC</th><th>Team</th><th>FBS record</th><th>r</th><th>Colley</th><th>Played ERC SOS</th><th>Conference</th></tr></thead>
+<thead><tr><th>ERC</th><th>Team</th><th>FBS<br>record</th><th>r</th><th>Colley</th><th>Played<br>ERC SOS</th><th>Conference</th></tr></thead>
 <tbody>
 {''.join(rows50)}
 </tbody>
