@@ -31,14 +31,13 @@ html = f"""<!DOCTYPE html>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Equal Result Credit</title>
 <style>
-  th { white-space: normal; }
   body {{ font-family: Georgia, serif; max-width: 820px; margin: 2rem auto; padding: 0 1rem; color: #1a1a1a; line-height: 1.45; }}
   h1 {{ font-size: 1.6rem; margin-bottom: 0.2rem; }}
   .sub {{ color: #444; margin-top: 0; }}
   table {{ border-collapse: collapse; width: 100%; margin: 1.2rem 0; }}
   th, td {{ text-align: left; padding: 0.35rem 0.45rem; border-bottom: 1px solid #ddd; }}
-  th {{ border-bottom: 2px solid #222; }}
-  h2 {{ font-size: 1.2rem; margin-top: 2rem; }}
+      th {{ border-bottom: 2px solid #222; white-space: normal; }}
+      h2 {{ font-size: 1.2rem; margin-top: 2rem; }}
   .split {{ color: #9b1c1c; font-weight: 700; background: #fde8e8; }}
 </style>
 </head>
